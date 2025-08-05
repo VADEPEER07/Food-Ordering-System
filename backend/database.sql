@@ -1,0 +1,21 @@
+CREATE DATABASE IF NOT EXISTS FoodOrdering;
+USE FoodOrdering;
+
+CREATE TABLE IF NOT EXISTS Users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS FoodItems (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    price DECIMAL(10,2)
+);
+
+CREATE TABLE IF NOT EXISTS Orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
